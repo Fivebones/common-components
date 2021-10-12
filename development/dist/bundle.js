@@ -409,7 +409,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _bab
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _constants_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/index */ \"./src/constants/index.js\");\n/* harmony import */ var _constants_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_constants_index__WEBPACK_IMPORTED_MODULE_0__);\n\nvar options = {\n  lines: 100,\n  // The number of lines to draw\n  length: 0,\n  // The length of each line\n  width: 9,\n  // The line thickness\n  radius: 43,\n  // The radius of the inner circle\n  scale: 0.5,\n  // Scales overall size of the spinner\n  corners: 1,\n  // Corner roundness (0..1)\n  color: \"#45c0c1\",\n  // #rgb or #rrggbb or array of colors\n  opacity: 0,\n  // Opacity of the lines\n  rotate: 0,\n  // The rotation offset\n  direction: 1,\n  // 1: clockwise, -1: counterclockwise\n  speed: 1.6,\n  // Rounds per second\n  trail: 80,\n  // Afterglow percentage\n  fps: 20,\n  // Frames per second when using setTimeout() as a fallback for CSS\n  zIndex: (_constants_index__WEBPACK_IMPORTED_MODULE_0___default().zIndexLoader),\n  // The z-index (defaults to 2000000000  if not set)\n  className: \"commonLoader\",\n  // The CSS class to assign to the spinner\n  top: \"0\",\n  // Top position relative to parent\n  left: \"50%\",\n  // Left position relative to parent\n  shadow: false,\n  // Whether to render a shadow\n  hwaccel: true,\n  // Whether to use hardware acceleration\n  position: \"absolute\" // Element positioning\n\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (options);\n\n//# sourceURL=webpack://validere-common/./src/Loader/LoadingBar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _constants_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/index */ \"./src/constants/index.js\");\n\nvar options = {\n  lines: 100,\n  // The number of lines to draw\n  length: 0,\n  // The length of each line\n  width: 9,\n  // The line thickness\n  radius: 43,\n  // The radius of the inner circle\n  scale: 0.5,\n  // Scales overall size of the spinner\n  corners: 1,\n  // Corner roundness (0..1)\n  color: \"#45c0c1\",\n  // #rgb or #rrggbb or array of colors\n  opacity: 0,\n  // Opacity of the lines\n  rotate: 0,\n  // The rotation offset\n  direction: 1,\n  // 1: clockwise, -1: counterclockwise\n  speed: 1.6,\n  // Rounds per second\n  trail: 80,\n  // Afterglow percentage\n  fps: 20,\n  // Frames per second when using setTimeout() as a fallback for CSS\n  zIndex: _constants_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].zIndexLoader,\n  // The z-index (defaults to 2000000000  if not set)\n  className: \"commonLoader\",\n  // The CSS class to assign to the spinner\n  top: \"0\",\n  // Top position relative to parent\n  left: \"50%\",\n  // Left position relative to parent\n  shadow: false,\n  // Whether to render a shadow\n  hwaccel: true,\n  // Whether to use hardware acceleration\n  position: \"absolute\" // Element positioning\n\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (options);\n\n//# sourceURL=webpack://validere-common/./src/Loader/LoadingBar.js?");
 
 /***/ }),
 
@@ -613,7 +613,7 @@ eval("var colours = __webpack_require__(/*! ./colours-vars.json */ \"./src/const
 /*!********************************!*\
   !*** ./src/constants/index.js ***!
   \********************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 eval("var _defineProperty = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ \"./node_modules/@babel/runtime/helpers/defineProperty.js\");\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\nvar zIndex = __webpack_require__(/*! ./zIndex */ \"./src/constants/zIndex.js\");\n\nvar breakpoints = __webpack_require__(/*! ./breakpoints */ \"./src/constants/breakpoints.js\");\n\nvar colours = __webpack_require__(/*! ./colours */ \"./src/constants/colours.js\");\n\nvar styles = _objectSpread(_objectSpread(_objectSpread({}, zIndex.zIndex), colours.colours), breakpoints.breakpoints);\n\nvar customProperties = _objectSpread(_objectSpread(_objectSpread({}, zIndex.customProperties), colours.customProperties), breakpoints.customProperties);\n\nmodule.exports = _objectSpread({\n  customProperties: customProperties\n}, styles);\n\n//# sourceURL=webpack://validere-common/./src/constants/index.js?");
 
@@ -4766,6 +4766,21 @@ eval("module.exports = JSON.parse('{\"zIndexDropdown\":1000,\"zIndexSticky\":102
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	!function() {
+/******/ 		__webpack_require__.hmd = function(module) {
+/******/ 			module = Object.create(module);
+/******/ 			if (!module.children) module.children = [];
+/******/ 			Object.defineProperty(module, 'exports', {
+/******/ 				enumerable: true,
+/******/ 				set: function() {
+/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 				}
+/******/ 			});
+/******/ 			return module;
+/******/ 		};
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

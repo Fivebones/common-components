@@ -135,6 +135,7 @@ const config: Configuration = {
   },
   plugins: [
     new HotModuleReplacementPlugin(),
+    new CaseSensitivePathsWebpackPlugin(),
     new CleanWebpackPlugin(),
     new optimize.AggressiveMergingPlugin(), //Merge chunks
     new MiniCssExtractPlugin(),
