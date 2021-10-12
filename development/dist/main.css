@@ -1,5 +1,5 @@
 /*!***********************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/index.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/index.scss ***!
   \***********************************************************************************************************************************************************************************************************/
 /**
  * Usage: @include fontStyles(headline, xl); // adds the headline-xl style to rule
@@ -80,7 +80,7 @@
   letter-spacing: 0.01em; }
 
 /*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./node_modules/@reach/dialog/styles.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./node_modules/@reach/dialog/styles.css ***!
   \**********************************************************************************************************************************************************************************************************************************/
 /* This code is subject to LICENSE in root of this repository */
 /* Used to detect in JavaScript if apps have loaded styles or not. */
@@ -102,7 +102,7 @@
   outline: none; }
 
 /*!************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Modal/Modal.module.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Modal/Modal.module.scss ***!
   \************************************************************************************************************************************************************************************************************************/
 [data-reach-dialog-overlay] {
   z-index: 1040;
@@ -194,7 +194,7 @@ body {
     opacity: 1; } }
 
 /*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Table/CustomTable.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Table/CustomTable.css ***!
   \**********************************************************************************************************************************************************************************************************************/
 .customTable .customTable__titleContainer {
   width: 100%;
@@ -301,7 +301,7 @@ body {
   border-bottom: 1px solid #ddd; }
 
 /*!********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Table/Datatable.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Table/Datatable.css ***!
   \********************************************************************************************************************************************************************************************************************/
 .LeftSideGrid {
   overflow: hidden !important; }
@@ -428,7 +428,7 @@ body {
   box-shadow: inset 0 -2px 0 #2196f3; }
 
 /*!**************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Page/Page.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Page/Page.css ***!
   \**************************************************************************************************************************************************************************************************************/
 .page {
   margin: 15px;
@@ -449,7 +449,7 @@ body {
   margin-bottom: 15px; }
 
 /*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Breadcrumbs/Breadcrumbs.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Breadcrumbs/Breadcrumbs.css ***!
   \****************************************************************************************************************************************************************************************************************************/
 .common__breadcrumbs {
   margin-bottom: 10px; }
@@ -469,7 +469,7 @@ body {
   margin: 0px 10px; }
 
 /*!****************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Panel/Panel.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Panel/Panel.css ***!
   \****************************************************************************************************************************************************************************************************************/
 .commonPanel {
   background-color: #fff;
@@ -488,7 +488,7 @@ body {
   cursor: pointer; }
 
 /*!******************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Button/Button.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Button/Button.css ***!
   \******************************************************************************************************************************************************************************************************************/
 .commonButton {
   border: 1px solid transparent;
@@ -544,7 +544,7 @@ body {
   border: 1px solid #d9d9d9; }
 
 /*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/NavBar/NavBar.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/NavBar/NavBar.scss ***!
   \*******************************************************************************************************************************************************************************************************************/
 .commonNavbar {
   height: 60px;
@@ -609,7 +609,7 @@ body {
     background-color: #4cacae; }
 
 /*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/NavBar/ProfilePopover.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/NavBar/ProfilePopover.css ***!
   \**************************************************************************************************************************************************************************************************************************/
 .profilePopover {
   background-color: white;
@@ -635,7 +635,7 @@ body {
   border-bottom: 1px solid #e5e5e5; }
 
 /*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/Sidebar/Sidebar.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/Sidebar/Sidebar.scss ***!
   \*********************************************************************************************************************************************************************************************************************/
 .commonSidebar {
   background: #183e56;

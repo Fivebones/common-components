@@ -1,20 +1,35 @@
-const path = require("path");
-const webpack = require("webpack");
+import path from "path";
+import { Configuration, HotModuleReplacementPlugin, optimize } from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CaseSensitivePathsWebpackPlugin from "case-sensitive-paths-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+
 const jsonImporter = require("node-sass-json-importer");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const globalStylesRegex = /\.(sass|scss|css)$/i;
 const localStylesRegex = /\.module\.(sass|scss|css)$/i;
 
-module.exports = {
+const config: Configuration = {
   mode: "production",
   entry: path.resolve(__dirname, "./src/index.js"),
   module: {
     rules: [
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -99,7 +114,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ["*", ".ts", ".tsx", ".js", ".jsx"],
   },
   output: {
     publicPath: "/",
@@ -125,10 +140,10 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new CaseSensitivePathsPlugin(),
+    new HotModuleReplacementPlugin(),
+    new CaseSensitivePathsWebpackPlugin(),
     new CleanWebpackPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
+    new optimize.AggressiveMergingPlugin(), //Merge chunks
     new MiniCssExtractPlugin(),
   ],
   devServer: {
@@ -148,3 +163,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;

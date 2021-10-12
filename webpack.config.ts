@@ -1,16 +1,31 @@
-const path = require("path");
-const webpack = require("webpack");
+import path from "path";
+import { Configuration, HotModuleReplacementPlugin } from "webpack";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
 const jsonImporter = require("node-sass-json-importer");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const globalStylesRegex = /\.(sass|scss|css)$/i;
 const localStylesRegex = /\.module\.(sass|scss|css)$/i;
 
-module.exports = {
-  mode: "development",
-  entry: path.resolve(__dirname, "./src/index.js"),
+const config: Configuration = {
+  entry: "./src/index.js",
   module: {
     rules: [
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -106,7 +121,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ["*", ".ts", ".tsx", ".js", ".jsx"],
   },
   output: {
     publicPath: "/",
@@ -132,7 +147,10 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+    }),
+    new HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
   ],
   devServer: {
@@ -142,3 +160,5 @@ module.exports = {
     hot: true,
   },
 };
+
+export default config;
