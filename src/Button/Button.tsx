@@ -1,53 +1,50 @@
 import React from "react";
-import FontAwesome from "react-fontawesome";
-import { ButtonType } from "../types/Button";
-import "./Button.css";
+import {
+  getIcon,
+  getSizeClassName,
+  getTypeClassName,
+  getVariantClassName,
+} from "./ButtonHelper";
+import {
+  ButtonProps,
+  ButtonSize,
+  ButtonType,
+  ButtonTypePreset,
+  ButtonVariant,
+} from "../types/Button";
+import styles from "./Button.module.scss";
+import classNames from "classnames/bind";
 
-const getTypeClassName = (type: string): React.CSSProperties => {
-  switch (type) {
-    case "primary":
-      return "commonPrimaryButton" as React.CSSProperties;
-    case "danger":
-      return "commonDangerButton" as React.CSSProperties;
-    default:
-      return "commonDefaultButton" as React.CSSProperties;
-  }
-};
-
-const getIcon = (isLoading: boolean, icon: string, iconClassName: string) => {
-  if (isLoading) {
-    return <FontAwesome name="spinner" className="loadingIcon fa-pulse" />;
-  } else if (icon) {
-    return <FontAwesome name={icon} className={`${iconClassName}`} />;
-  }
-
-  return null;
-};
+const cx = classNames.bind(styles);
 
 const Button = ({
   className = "",
   style,
-  type,
+  type = "button",
+  preset = ButtonTypePreset.Default,
+  variant = ButtonVariant.Default,
+  size = ButtonSize.Small,
   onClick,
   disabled,
   icon,
   iconClassName = "",
   isLoading,
-  outline,
-  isSubmit,
   children,
-}: ButtonType) => {
-  const typeClassName = getTypeClassName(type);
+}: ButtonProps) => {
   const buttonIcon = getIcon(isLoading, icon, iconClassName);
 
   return (
     <button
-      className={`commonButton ${typeClassName} ${outline ? "buttonOutline" : ""
-        } ${className}`}
+      className={`${cx(
+        "button",
+        getSizeClassName(size),
+        getVariantClassName(variant),
+        getTypeClassName(preset)
+      )} ${className}`}
       onClick={onClick}
       disabled={isLoading || disabled}
       style={style}
-      type={isSubmit ? "submit" : "button"}
+      type={type}
     >
       <>
         {buttonIcon}
