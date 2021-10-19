@@ -1,26 +1,9 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
-import * as PropTypes from "prop-types";
+import { BreadcrumbType, BreadcrumbsType } from "../types/Breadcrumbs";
 import "./Breadcrumbs.css";
 
-type BreadcrumbProps = {
-  title: string;
-  onClick: React.MouseEventHandler<HTMLAnchorElement>;
-  isLastBreadcrumb: boolean;
-};
-
-type BreadcrumbsProps = {
-  /** An array of { title, onClick } objects, with title being what is displayed
-     *  and onClick the function called when the breadcrumb is clicked
-     */
-  breadcrumbs: Array<BreadcrumbProps>,
-  /** The className applied to the containing div */
-  className: string,
-  /** Determines the default inline style of the containing div */
-  style: React.CSSProperties,
-}
-
-const Breadcrumb = ({ title, onClick, isLastBreadcrumb }: BreadcrumbProps) => {
+const Breadcrumb = ({ title, onClick, isLastBreadcrumb }: BreadcrumbType) => {
   return isLastBreadcrumb ? (
     <div className="breadcrumb__item">{title}</div>
   ) : (
@@ -34,12 +17,9 @@ const Breadcrumb = ({ title, onClick, isLastBreadcrumb }: BreadcrumbProps) => {
   );
 };
 
-const Breadcrumbs = ({ breadcrumbs, className, style }: BreadcrumbsProps) => {
+const Breadcrumbs = ({ breadcrumbs, className, style }: BreadcrumbsType) => {
   return breadcrumbs?.length ? (
-    <div
-      className={`common__breadcrumbs ${className || ""}`}
-      style={style}
-    >
+    <div className={`common__breadcrumbs ${className || ""}`} style={style}>
       {breadcrumbs.map(({ title, onClick }, index) => {
         const isLastBreadcrumb = index === breadcrumbs.length - 1;
 

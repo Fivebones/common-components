@@ -1,6 +1,6 @@
 import React from "react";
 import TitleType from "../Title";
-import BreadcrumbsType from "../Breadcrumbs";
+import { BreadcrumbsType } from "../Breadcrumbs";
 
 // Your types here.
 type PageType = {
