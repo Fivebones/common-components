@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import * as PropTypes from "prop-types";
 import { Table } from "react-virtualized";
 import findIndex from "lodash/findIndex";
 import FontAwesome from "react-fontawesome";
 import { sortListByType } from "./CustomTableHelper";
+import {
+  CustomTableStateType,
+  CustomTableType,
+  HeaderRendererParams,
+  ListItemType,
+  SortDirection,
+} from "../types/Table";
 import "./CustomTable.css";
 
 const HEIGHT_OFFSET = 50; // Account height for the things outside of the table (title, searchbox, and etc)
@@ -12,18 +18,18 @@ const HIGHLIGHTED_TABLE_ROW_COLOR = "rgba(69, 192, 193, 0.2)";
 
 const BORDER_OFFSET = 2;
 
-class CustomTable extends Component {
-  constructor(props) {
+class CustomTable extends Component<CustomTableType, CustomTableStateType> {
+  constructor(props: CustomTableType) {
     super(props);
     this.state = {
       updateTable: false,
       highlightIndex: -1,
       filterValue: "",
-      sortDirection: "asc",
+      sortDirection: SortDirection.Asc,
       sortBy: null,
     };
 
-    this.handleSearch = this.handleSearch.bind(this);
+    // this.handleSearch = this.handleSearch.bind(this);
     this.getRowColor = this.getRowColor.bind(this);
     this.headerRenderer = this.headerRenderer.bind(this);
     this.getSortedList = this.getSortedList.bind(this);
@@ -37,13 +43,15 @@ class CustomTable extends Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: CustomTableType) {
     if (prevProps !== this.props) {
       const { highlightRow, list } = this.props;
       const sortedList = this.getSortedList(list);
 
       if (highlightRow) {
-        let highlightIndex = findIndex(sortedList, { id: highlightRow.id });
+        const highlightIndex = findIndex(sortedList, {
+          id: highlightRow.id,
+        });
 
         this.setState({
           highlightIndex: highlightIndex,
@@ -56,7 +64,7 @@ class CustomTable extends Component {
     return <div className="noDataRow">No data available</div>;
   }
 
-  getRowColor = (index) => {
+  getRowColor = (index: number) => {
     const { highlightIndex } = this.state;
 
     if (highlightIndex !== -1 && index === highlightIndex) {
@@ -66,14 +74,14 @@ class CustomTable extends Component {
     return { backgroundColor: "#fff" };
   };
 
-  handleSearch(event) {
-    let value = event.target.value;
-    this.setState({
-      filterValue: value,
-    });
-  }
+  // handleSearch(event) {
+  //   let value = event.target.value;
+  //   this.setState({
+  //     filterValue: value,
+  //   });
+  // }
 
-  headerRenderer({ dataKey, label, disableSort }) {
+  headerRenderer({ dataKey, label, disableSort }: HeaderRendererParams) {
     const { sortBy, sortDirection } = this.state;
     return (
       <div
@@ -83,10 +91,7 @@ class CustomTable extends Component {
         className={disableSort ? "disablePointerEvent" : "clickable"}
       >
         {sortBy === dataKey ? (
-          <FontAwesome
-            name={sortDirection === "asc" ? "sort-asc" : "sort-desc"}
-            className="icon"
-          />
+          <FontAwesome name={`sort-${sortDirection}`} className="icon" />
         ) : null}
 
         {label}
@@ -94,27 +99,30 @@ class CustomTable extends Component {
     );
   }
 
-  setSortingOrder(columnKey) {
-    let { sortDirection, sortBy } = this.state;
+  setSortingOrder(columnKey: string) {
+    const { sortDirection, sortBy } = this.state;
 
     if (columnKey !== sortBy) {
       this.setState({
         sortBy: columnKey,
-        sortDirection: "asc",
+        sortDirection: SortDirection.Asc,
       });
     } else {
-      let nextSortDirection = sortDirection === "asc" ? "desc" : "asc";
+      const nextSortDirection =
+        sortDirection === SortDirection.Asc
+          ? SortDirection.Desc
+          : SortDirection.Asc;
       this.setState({
         sortDirection: nextSortDirection,
       });
     }
   }
 
-  csvDownload(list) {
-    this.props.csvDownload(list);
-  }
+  // csvDownload(list: ListItemType[]) {
+  //   this.props.csvDownload(list);
+  // }
 
-  getSortedList(list) {
+  getSortedList(list: ListItemType[]) {
     const { customSort } = this.props;
     const { sortBy, sortDirection } = this.state;
 
@@ -122,7 +130,7 @@ class CustomTable extends Component {
       return list;
     }
     if (customSort && customSort[sortBy]) {
-      return sortDirection === "asc"
+      return sortDirection === SortDirection.Asc
         ? customSort[sortBy](list, sortBy)
         : customSort[sortBy](list, sortBy).reverse();
     } else {
@@ -130,7 +138,7 @@ class CustomTable extends Component {
     }
   }
 
-  getRowClassName(row) {
+  getRowClassName(row: string | Function) {
     const { rowClassName } = this.props;
     if (rowClassName) {
       if (typeof rowClassName === "string") {
@@ -141,7 +149,13 @@ class CustomTable extends Component {
     }
   }
 
-  getTableHeight(title, filterPillbox, csvDownload, filterKey, filterRow) {
+  getTableHeight({
+    title,
+    filterPillbox,
+    csvDownload,
+    filterKey,
+    filterRow,
+  }: CustomTableType) {
     if (title || filterPillbox || csvDownload || filterKey || filterRow) {
       return this.props.height - HEIGHT_OFFSET;
     } else {
@@ -159,22 +173,13 @@ class CustomTable extends Component {
       headerHeight = 40,
       headerRenderer,
       filterKey,
-      csvDownload,
       cellClassName,
-      filterRow,
-      filterPillbox,
       deferredMeasurementCache,
     } = this.props;
 
     const { highlightIndex, updateTable } = this.state;
 
-    let TableHeight = this.getTableHeight(
-      title,
-      filterPillbox,
-      csvDownload,
-      filterKey,
-      filterRow
-    );
+    let TableHeight = this.getTableHeight(this.props);
 
     const sortedlist = this.getSortedList(list);
 
@@ -183,7 +188,7 @@ class CustomTable extends Component {
     if (children) {
       childrenWithProps = React.Children.map(children, (child) => {
         // provide default headerRenderer
-        if (child) {
+        if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             headerRenderer: headerRenderer ?? this.headerRenderer,
           });
@@ -200,7 +205,7 @@ class CustomTable extends Component {
         {title ? (
           <div
             className="customTable__titleContainer"
-            style={{ marginBottom: filterKey ? null : "20px" }}
+            style={filterKey ? {} : { marginBottom: "20px" }}
           >
             {title && <div className="customTable__title">{title}</div>}
           </div>
@@ -230,70 +235,5 @@ class CustomTable extends Component {
     );
   }
 }
-
-CustomTable.propTypes = {
-  /** The title of the table shown above */
-  title: PropTypes.string,
-  /** The  className given to table container */
-  className: PropTypes.string,
-  /** The array of objects, each representing a row */
-  list: PropTypes.array,
-  /** How many pixels from left to right does the table take up */
-  width: PropTypes.number,
-  /** How many pixels from top to bottom does the table take up */
-  height: PropTypes.number,
-  /** How many pixels in height is the header row */
-  headerHeight: PropTypes.number,
-  /** A function used to render the header  */
-  headerRenderer: PropTypes.func,
-  /** Highlights the row with data matching the passed in object */
-  highlightRow: PropTypes.object,
-  /** The row containing the dropdowns, inputs, and dateselectors for filtering */
-  filterRow: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  /** The children of this table are usually the react-virtualized Column components  */
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  /** Shows the selected values of the dropdown in a pillbox */
-  filterPillbox: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  /** Which column (identified by key) is what the table is originally sorted by */
-  defaultSortBy: PropTypes.string,
-  /** Is the table originally sorted ascending (asc) or descending (desc) */
-  defaultSortDirection: PropTypes.string,
-  /** Provides an input field that filters the list of objects based on the value
-   *  of the given property
-   **/
-  filterKey: PropTypes.string,
-  /** css className given to the inner grid container */
-  cellClassName: PropTypes.string,
-  /** the height in pixels of each row, defaults to 40 if none given */
-  rowHeight: PropTypes.number,
-  /** A function that is given the entire list as an argument. Shows a button
-   *  with the label ".csv" that triggers the function when clicked
-   */
-  csvDownload: PropTypes.func,
-  /** The function called when a row is clicked. Given the row object as an argument */
-  onRowClick: PropTypes.func,
-  /** An object with properties corresponding to a column dataKey with the value being
-   *  a custom sorter to be used to sort the list by that column
-   */
-  customSort: PropTypes.object,
-  /**
-   * A string that gives all row containers the className or a function that takes in
-   * the row object and determines the row container className
-   */
-  rowClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  /** a react-virtualized CellMeasurerCache that allows for customizable row heights
-   *  depending on the contained data
-   */
-  deferredMeasurementCache: PropTypes.object,
-};
 
 export default CustomTable;
