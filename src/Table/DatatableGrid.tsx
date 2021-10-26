@@ -191,8 +191,6 @@ const DatatableGrid = React.forwardRef(
         rowValue: DatatableListItem,
         columnKey: string
       ) => {
-        console.table(headers);
-        console.log(`I want ${columnIndex}`);
         if (headers[columnIndex]) {
           const header = headers[columnIndex];
           if (header?.cellRenderer) {
@@ -255,7 +253,7 @@ const DatatableGrid = React.forwardRef(
     };
 
     const getLeftGridColumnWidth = () => {
-      let firstColumnIndex = 0;
+      const firstColumnIndex = 0;
 
       let columnWidth = headers[firstColumnIndex].width;
 
@@ -269,7 +267,7 @@ const DatatableGrid = React.forwardRef(
     };
 
     function getRemainderWidth() {
-      let totalColumnWidth = headers.reduce(
+      const totalColumnWidth = headers.reduce(
         (totalWidth, value) => totalWidth + value.width,
         0
       );

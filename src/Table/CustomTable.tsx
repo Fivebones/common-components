@@ -74,12 +74,12 @@ class CustomTable extends Component<CustomTableType, CustomTableStateType> {
     return { backgroundColor: "#fff" };
   };
 
-  // handleSearch(event) {
-  //   let value = event.target.value;
-  //   this.setState({
-  //     filterValue: value,
-  //   });
-  // }
+  handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    let value = event.target.value;
+    this.setState({
+      filterValue: value,
+    });
+  }
 
   headerRenderer({ dataKey, label, disableSort }: HeaderRendererParams) {
     const { sortBy, sortDirection } = this.state;
@@ -118,9 +118,9 @@ class CustomTable extends Component<CustomTableType, CustomTableStateType> {
     }
   }
 
-  // csvDownload(list: ListItemType[]) {
-  //   this.props.csvDownload(list);
-  // }
+  csvDownload(list: ListItemType[]) {
+    this.props.csvDownload(list);
+  }
 
   getSortedList(list: ListItemType[]) {
     const { customSort } = this.props;
@@ -179,7 +179,7 @@ class CustomTable extends Component<CustomTableType, CustomTableStateType> {
 
     const { highlightIndex, updateTable } = this.state;
 
-    let TableHeight = this.getTableHeight(this.props);
+    const TableHeight = this.getTableHeight(this.props);
 
     const sortedlist = this.getSortedList(list);
 
