@@ -75,7 +75,7 @@ class CustomTable extends Component<CustomTableType, CustomTableStateType> {
   };
 
   handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    let value = event.target.value;
+    const value = event.target.value;
     this.setState({
       filterValue: value,
     });
