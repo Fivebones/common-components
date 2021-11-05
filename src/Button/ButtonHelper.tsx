@@ -35,7 +35,11 @@ export const getSizeClassName = (size: ButtonSize): string => {
   }
 };
 
-export const getIcon = (isLoading: boolean, icon: string, iconClassName: string): JSX.Element | null => {
+export const getIcon = (
+  isLoading: boolean,
+  icon: string,
+  iconClassName: string
+): JSX.Element | null => {
   if (isLoading) {
     return <FontAwesome name="spinner" className="loadingIcon fa-pulse" />;
   } else if (icon) {
