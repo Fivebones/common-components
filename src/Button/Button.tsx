@@ -8,16 +8,16 @@ const cx = classNames.bind(styles);
 
 const Button = ({
   className = "",
-  style = undefined,
+  style,
   variant = "outline",
   size = "small",
-  onClick = undefined,
+  type = "button",
+  icon,
+  onClick,
   disabled,
-  icon = undefined,
   iconPosition = "left",
   iconClassName = "",
   isLoading = false,
-  type = "button",
   as: Component = "button",
   children,
   ...props
