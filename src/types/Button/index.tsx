@@ -21,6 +21,7 @@ export type ButtonProps = {
   iconClassName?: string;
   /** Grey out the button while true */
   isLoading?: boolean;
+  /** Change the wrapper component to be another html element instead of a div for semantic/functional purposes e.g. a link element to allow middle click, a label component to trigger onFocus for other elements like */
   as: React.ElementType;
   /** The content of the button */
   children: React.ReactNode[] | React.ReactNode;
